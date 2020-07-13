@@ -73,13 +73,13 @@ class SignInForm extends Component {
         return (
           <form onSubmit={ this.handlePasswordReset }>
             <InputField
-              name="new_password"
+              name='newPassword'
               required
               type="password"
               label="Choose a new password"
               handleChange={this.handleChange}
             />
-            <button className="btn btn-success btn-lg">Sign In</button>
+            <button className="btn btn-success btn-lg">Set Password</button>
           </form>
         )
     } else {

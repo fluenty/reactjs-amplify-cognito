@@ -10,7 +10,7 @@ const InputField = (props) => {
        onChange={(e) => props.handleChange(e) }
        className="form-control"
        required={props.required}
-       placeHolder={props.placeholder}
+       placeholder={props.placeholder}
       />
     </div>
   )

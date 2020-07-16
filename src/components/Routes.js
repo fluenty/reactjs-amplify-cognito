@@ -10,6 +10,8 @@ import SignUpForm from "../screens/SignUpForm"
 import ForgotPasswordForm from "../screens/ForgotPasswordForm"
 import CreateUserForm from "../screens/CreateUserForm"
 import ListUsers from "../screens/ListUsers"
+import CreateGroupForm from "../screens/CreateGroupForm"
+import ListGroups from "../screens/ListGroups"
 
 const Routes = () => {
   return(
@@ -29,6 +31,12 @@ const Routes = () => {
         </Route>
         <Route exact path="/users/create">
           <CreateUserForm />
+        </Route>
+        <Route exact path="/groups">
+          <ListGroups />
+        </Route>
+        <Route exact path="/groups/create">
+          <CreateGroupForm />
         </Route>
       </Switch>
     </Router>

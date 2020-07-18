@@ -17,6 +17,7 @@ let cognitoIdentityServiceProvider = new AWS.CognitoIdentityServiceProvider()
 
 class CreateUserForm extends Component {
   state = {
+    username: '',
     email: '',
     password: '',
     mobile: ''
@@ -36,19 +37,23 @@ class CreateUserForm extends Component {
   }
 
   handleCreateUser(e) {
-    const { email, password, mobile } = this.state
+    const { username, email, password, mobile } = this.state
 
     e.preventDefault()
 
     let result = new Promise((resolve, reject) => {
       let params = {
         UserPoolId: 'eu-west-1_SIeVberiS',
-        Username: email,
+        Username: username,
         TemporaryPassword: password,
         UserAttributes: [
           {
             Name: 'phone_number',
             Value: mobile
+          },
+          {
+            Name: 'email',
+            Value: email
           },
         ]
       }
@@ -72,10 +77,18 @@ class CreateUserForm extends Component {
       <p>Provide user details below...</p>
       <form onSubmit={ this.handleCreateUser }>
         <InputField
+          name="username"
+          required
+          type="text"
+          label="Username"
+          placeholder="joesoap"
+          handleChange={this.handleChange}
+        />
+        <InputField
           name="email"
           required
           type="email"
-          label="Username"
+          label="Email address"
           placeholder="joe@soap.com"
           handleChange={this.handleChange}
         />

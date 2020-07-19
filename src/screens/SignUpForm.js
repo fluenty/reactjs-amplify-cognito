@@ -7,6 +7,7 @@ import { withRouter } from "react-router-dom"
 class SignUpForm extends Component {
   state = {
     username: '',
+    email: '',
     password: '',
     phoneNumber: '',
     confirmationCode: '',
@@ -23,13 +24,13 @@ class SignUpForm extends Component {
   }
 
   signUp() {
-    const { username, password, phoneNumber } = this.state
+    const { username, email, password, phoneNumber } = this.state
 
     Auth.signUp({
       username: username,
       password: password,
       attributes: {
-        email: username,
+        email: email,
         phone_number: phoneNumber
       }
     })
@@ -88,12 +89,23 @@ class SignUpForm extends Component {
       )
     } else {
       return (
+        <>
+        <h1>Sign up</h1>
+        <p>Provide user details below...</p>
         <form onSubmit={ this.handleSubmit }>
           <InputField
             name="username"
             required
             type="text"
             label="Username"
+            handleChange={this.handleChange}
+            placeholder="joesoap"
+          />
+          <InputField
+            name="email"
+            required
+            type="email"
+            label="Email address"
             handleChange={this.handleChange}
             placeholder="joe@soap.com"
           />
@@ -114,6 +126,7 @@ class SignUpForm extends Component {
           />
           <button className="btn btn-success btn-lg">Sign up</button>
         </form>
+        </>
       )
     }
   }
